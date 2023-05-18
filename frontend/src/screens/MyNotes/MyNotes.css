@@ -1,0 +1,8 @@
+.title{
+    color: black;
+    text-decoration: none;
+    flex:1;
+    cursor:"pointer";
+    text-align: center;
+    font-size:small;
+}

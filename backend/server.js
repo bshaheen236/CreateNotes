@@ -1,12 +1,20 @@
 const express = require("express");
+const connectDB = require("./config/db");
+const cors = require("cors");
+const app = express();
+
 const notes = require("./data/notes");
 const dotenv = require("dotenv");
-const connectDB = require("./config/db");
 
-const app = express();
 dotenv.config();
 const PORT = process.env.PORT;
 connectDB();
+
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: false
+}))
+app.use(cors())
 
 
 app.get("/", (req, res) => {
@@ -16,9 +24,9 @@ app.get("/", (req, res) => {
 app.get("/api/notes", (req, res) => {
   res.json(notes);
 });
-app.get("/api/notes/:id",(req,res)=>{
-    const note= notes.find((n)=>n._id==req.params.id);
-    res.send(note); 
+app.get("/api/notes/:id", (req, res) => {
+  const note = notes.find((n) => n._id == req.params.id);
+  res.send(note);
 })
 
 
