@@ -1,10 +1,12 @@
 const express = require("express");
 const notes = require("./data/notes");
 const dotenv = require("dotenv");
+const connectDB = require("./config/db");
 
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT;
+connectDB();
 
 
 app.get("/", (req, res) => {
@@ -21,3 +23,6 @@ app.get("/api/notes/:id",(req,res)=>{
 
 
 app.listen(PORT, console.log(`server started in the PORT ${PORT}`));
+
+
+
