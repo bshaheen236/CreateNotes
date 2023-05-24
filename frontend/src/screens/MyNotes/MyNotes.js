@@ -30,8 +30,7 @@ export default function MyNotes() {
             </Link>
             {Notes.map((notes =>
             (
-
-                <Card style={{ margin: 10 }}>
+                <Card key={notes._id} style={{ margin: 10 }}>
 
                     <Card.Header style={{ display: "flex" }}>
                         <span
